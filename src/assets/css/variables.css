@@ -4,16 +4,26 @@
   --black: #141414;
   --base-opacity-16: #92a1b629;
   --base-opacity-24: #92a1b63d;
-  --base-1000: #212436;
+  --base-500: rgba(148, 132, 247, 0.08);
+  --base-600: rgba(148, 132, 247, 0.1);
   --base-700: #5b628a;
   --base-900: #282c41;
+  --base-1000: #212436;
+  --primary: #9484f7;
+  --primaryDate: #9484f7;
+  --after: rgba(91, 98, 138, 0.08);
 }
 html[prefers-color-scheme='dark'] {
   --pure-white: #1c1e2d;
   --black: #f1f2f7;
   --base-opacity-16: #92a1b629;
   --base-opacity-24: #92a1b63d;
-  --base-1000: #212436;
-  --base-700: #5b628a;
+  --base-500: #282c41;
+  --base-600: rgba(148, 132, 247, 0.1);
+  --base-700: #fff;
   --base-900: #f1f2f7;
+  --base-1000: #212436;
+  --primary: #9484f7;
+  --primaryDate: #fff;
+  --after: rgba(91, 98, 138, 0.08);
 }

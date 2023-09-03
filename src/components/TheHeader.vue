@@ -37,7 +37,7 @@ const toggleTheme = () => {
       </div>
       <nav class="relative flex items-center">
         <div class="flex items-center">
-          <div class="flex gap-4 items-center">
+          <div class="flex gap-20 items-center">
             <button
               @click="isToogle = !isToogle"
               type="button"
@@ -47,7 +47,7 @@ const toggleTheme = () => {
             </button>
             <ul
               v-if="isToogle"
-              class="absolute z-2 top-full flex flex-col gap-10 p-10 bg-custom-white rounded-lg ring-2 ring-slate-900/10 shadow-lg overflow-hidden text-sm text-custom-base-900 font-semibold mt-13"
+              class="absolute z-2 top-full flex flex-col gap-20 py-20 px-16 bg-custom-white rounded-lg ring-2 ring-slate-900/10 shadow-lg overflow-hidden text-sm text-custom-base-900 font-semibold mt-13"
             >
               <li class="flex gap-10 items-center cursor-pointer" @click="changeLocale('en')">
                 <img
@@ -56,7 +56,7 @@ const toggleTheme = () => {
                   alt=""
                 /><span>English</span>
               </li>
-              <li class="flex gap-10 items-center cursor-pointer" @click="changeLocale('ar')">
+              <li class="flex gap-10 items-center cursor-pointer" @click="changeLocale('ae')">
                 <img class="w-40 h-7" src="@/assets/img/Flag-Saudi-Arabia.webp" alt="" /><span
                   >Arabic</span
                 >

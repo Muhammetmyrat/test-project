@@ -1,7 +1,7 @@
 import { createI18n } from 'vue-i18n'
 
-import en from '@/locales/english'
-import ar from '@/locales/arabic'
+import en from '@/locales/en'
+import ae from '@/locales/ae'
 
 const i18n = createI18n({
   globalInjection: true,
@@ -10,7 +10,7 @@ const i18n = createI18n({
   legacy: false,
   messages: {
     en: en,
-    ar: ar
+    ae: ae
   }
 })
 

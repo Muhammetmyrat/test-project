@@ -1,5 +1,5 @@
 <template>
-  <svg viewBox="0 0 24 24" class="w-5 h-5" astro-icon="tabler:sun">
+  <svg viewBox="0 0 24 24" class="w-20 h-20" astro-icon="tabler:sun">
     <g
       fill="none"
       stroke="currentColor"
