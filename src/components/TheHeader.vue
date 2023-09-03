@@ -2,6 +2,16 @@
 import { RouterLink } from 'vue-router'
 import IconDarkMode from './icons/IconDarkMode.vue'
 import IconGitHub from './icons/IconGitHub.vue'
+const toggleTheme = () => {
+  const theme: string | null = localStorage.getItem('theme')
+  if (theme) {
+    document.documentElement.removeAttribute('prefers-color-scheme')
+    localStorage.removeItem('theme')
+  } else {
+    document.documentElement.setAttribute('prefers-color-scheme', 'dark')
+    localStorage.setItem('theme', 'dark')
+  }
+}
 </script>
 
 <template>
@@ -19,9 +29,7 @@ import IconGitHub from './icons/IconGitHub.vue'
         </RouterLink>
       </div>
       <nav
-        class="items-center w-full md:w-auto hidden md:flex text-gray-600 dark:text-slate-200 h-screen md:h-auto"
-        aria-label="Main navigation"
-        id="menu"
+        class="items-center w-full md:w-auto hidden md:flex dark:text-slate-200 h-screen md:h-auto"
       >
         <div class="md:self-center flex items-center mb-4 md:mb-0 ml-2">
           <div class="hidden gap-4 items-center md:flex">
@@ -29,6 +37,7 @@ import IconGitHub from './icons/IconGitHub.vue'
               type="button"
               class="text-custom-base-900 hover:bg-custom-base-900 hover:text-custom-white focus:outline-none ring-2 ring-gray-100 rounded-lg text-sm p-2.5 inline-flex items-center"
               aria-label="Toggle between Dark and Light mode"
+              @click="toggleTheme"
             >
               <icon-dark-mode></icon-dark-mode>
             </button>
