@@ -17,12 +17,21 @@ export default {
       minHeight: {
         'calc-65': 'calc(100vh - 65px)'
       },
+      width: {
+        40: '40px',
+        45: '45px'
+      },
+      height: {
+        40: '40px'
+      },
       spacing: {
         1: '1px',
         2: '2px',
         3.5: '3.5px',
         8: '8px',
+        10: '10px',
         12: '12px',
+        13: '13px',
         14: '14px',
         16: '16px',
         20: '20px',

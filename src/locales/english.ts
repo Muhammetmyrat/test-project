@@ -1,3 +1,5 @@
 import home from './modules/home/english'
 
-export default {}
+export default {
+  logoText: 'Test project'
+}

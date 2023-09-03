@@ -1,3 +1,5 @@
 import home from './modules/home/arabic'
 
-export default {}
+export default {
+  logoText: 'مشروع اختبار'
+}
