@@ -1,13 +1,18 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, onMounted, computed } from 'vue'
 import { RouterLink } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import IconDarkMode from './icons/IconDarkMode.vue'
 import IconGitHub from './icons/IconGitHub.vue'
+import { useIndex } from '@/stores/index'
 const { t: $t, locale } = useI18n()
+const store = computed(() => useIndex()).value
+const languages = computed(() => store.getLanguages)
 let isToogle = ref<Boolean>(false)
+let langToggleButton = ref<any>(null)
 const changeLocale = (newLocale: string) => {
   locale.value = newLocale
+  localStorage.setItem('lang', newLocale)
 }
 const toggleTheme = () => {
   const theme: string | null = localStorage.getItem('theme')
@@ -19,6 +24,19 @@ const toggleTheme = () => {
     localStorage.setItem('theme', 'dark')
   }
 }
+const getImageUrl = (img: string): string => {
+  return new URL(`../assets/img/${img}`, import.meta.url).href
+}
+onMounted(() => {
+  document.addEventListener('click', (event) => {
+    const isClickInside = langToggleButton.value?.contains(event.target)
+    if (!isClickInside) {
+      if (isToogle.value) {
+        isToogle.value = false
+      }
+    }
+  })
+})
 </script>
 
 <template>
@@ -41,25 +59,25 @@ const toggleTheme = () => {
             <button
               @click="isToogle = !isToogle"
               type="button"
+              ref="langToggleButton"
               class="text-custom-base-900 hover:bg-custom-base-900 hover:text-custom-white focus:outline-none ring-2 ring-gray-100 rounded-lg text-sm p-2.5 inline-flex items-center"
             >
               <span>{{ locale === 'en' ? 'English' : 'Arabic' }}</span>
             </button>
             <ul
               v-if="isToogle"
+              @click.stop
               class="absolute z-2 top-full flex flex-col gap-20 py-20 px-16 bg-custom-white rounded-lg ring-2 ring-slate-900/10 shadow-lg overflow-hidden text-sm text-custom-base-900 font-semibold mt-13"
             >
-              <li class="flex gap-10 items-center cursor-pointer" @click="changeLocale('en')">
-                <img
-                  class="w-40 h-7"
-                  src="@/assets/img/Flag-United-States-of-America.webp"
-                  alt=""
-                /><span>English</span>
-              </li>
-              <li class="flex gap-10 items-center cursor-pointer" @click="changeLocale('ae')">
-                <img class="w-40 h-7" src="@/assets/img/Flag-Saudi-Arabia.webp" alt="" /><span
-                  >Arabic</span
-                >
+              <li
+                v-for="language in languages"
+                :key="language.id"
+                class="flex gap-10 items-center cursor-pointer"
+                @click.stop="changeLocale(language.locale)"
+              >
+                <img class="w-40 h-7" :src="getImageUrl(language.img)" alt="" /><span>{{
+                  language.name
+                }}</span>
               </li>
             </ul>
             <button

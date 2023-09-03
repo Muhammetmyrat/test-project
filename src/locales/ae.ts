@@ -1,3 +1,4 @@
 export default {
-  logoText: 'مشروع اختبار'
+  logoText: 'مشروع اختبار',
+  today: 'اليوم'
 }

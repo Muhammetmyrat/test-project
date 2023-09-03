@@ -13,9 +13,6 @@ import WidgetCard from '../components/WidgetCard.vue'
     <widget-dates-slider></widget-dates-slider>
     <widget-cards>
       <widget-card></widget-card>
-      <widget-card></widget-card>
-      <widget-card></widget-card>
-      <widget-card></widget-card>
     </widget-cards>
   </div>
 </template>

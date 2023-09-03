@@ -2,15 +2,16 @@
 import { ref, computed } from 'vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { useDatesStore } from '@/stores/dates'
+import { useI18n } from 'vue-i18n'
 import 'swiper/css/navigation'
 import 'swiper/css'
 import IconChevronRight from './icons/IconChevronRight.vue'
 import IconChevronLeft from './icons/IconChevronLeft.vue'
 import type { WidgetWeekDays } from '../types/index'
-const datesStore = computed<any>(() => useDatesStore()).value
-const dates = computed<WidgetWeekDays>(() => datesStore.getDates)
-const dayInActive = computed<WidgetWeekDays>(() => datesStore.dayInActive)
-
+const { t: $t } = useI18n()
+const datesStore = computed(() => useDatesStore()).value
+const dates = computed(() => datesStore.getDates)
+const dayInActive = computed(() => datesStore.dayInActive)
 const swiperRef = ref<any>(null)
 const prevSlide = () => {
   if (swiperRef.value) {
@@ -24,15 +25,14 @@ const nextSlide = () => {
   }
 }
 
-const getDayName = (name: string, day: number) => {
+const getDayName = (weekDay: string, day: number) => {
   let currentDay: any = new Date().getDate()
-  return currentDay === day ? 'Today' : name
+  return currentDay === day ? $t('today') : weekDay
 }
 
 const updatedayInActive = (date: WidgetWeekDays) => {
   datesStore.setActiveDate(date)
 }
-console.log(dates)
 </script>
 
 <template>
@@ -57,7 +57,7 @@ console.log(dates)
         }
       }"
     >
-      <swiper-slide v-for="(item, index) in dates" :key="index">
+      <swiper-slide v-for="(item, index) in dates" :key="index" class="cursor-pointer">
         <div
           @click="updatedayInActive(item)"
           :class="[
@@ -96,6 +96,3 @@ console.log(dates)
     </button>
   </div>
 </template>
-
-<style scoped></style>
-../../../stores/dates
