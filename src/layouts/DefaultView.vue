@@ -4,7 +4,7 @@ import TheHeader from '@/components/TheHeader.vue'
 
 <template>
   <the-header></the-header>
-  <main>
+  <main class="w-full min-h-calc-65 overflow-x-hidden flex justify-center items-center">
     <router-view />
   </main>
 </template>

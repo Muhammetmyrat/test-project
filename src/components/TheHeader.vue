@@ -33,7 +33,7 @@ import IconGitHub from './icons/IconGitHub.vue'
               <icon-dark-mode></icon-dark-mode>
             </button>
             <a
-              href="https://github.com/"
+              href="https://github.com/Muhammetmyrat/test-project"
               target="_blank"
               class="inline-block text-custom-base-900 hover:bg-custom-base-900 hover:text-custom-white ring-2 ring-gray-100 rounded-lg text-sm p-2.5"
               aria-label="Github"

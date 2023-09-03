@@ -14,6 +14,9 @@ export default {
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif']
       },
+      minHeight: {
+        'calc-65': 'calc(100vh - 65px)'
+      },
       colors: {
         custom: {
           white: 'var(--pure-white)',
