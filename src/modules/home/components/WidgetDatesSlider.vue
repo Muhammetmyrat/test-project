@@ -57,7 +57,11 @@ const updatedayInActive = (date: WidgetWeekDays) => {
         }
       }"
     >
-      <swiper-slide v-for="(item, index) in dates" :key="index" class="cursor-pointer">
+      <swiper-slide
+        v-for="(item, index) in dates"
+        :key="index"
+        class="cursor-pointer hover:shadow-md"
+      >
         <div
           @click="updatedayInActive(item)"
           :class="[

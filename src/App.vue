@@ -2,6 +2,7 @@
 import { computed } from 'vue'
 import { RouterView } from 'vue-router'
 import Default from '@/layouts/DefaultView.vue'
+import BaseToast from '@/components/BaseToast.vue'
 import { useI18n } from 'vue-i18n'
 const { locale } = useI18n()
 const layout = computed(() => Default)
@@ -23,4 +24,5 @@ if (lang) {
   <component :is="layout">
     <RouterView />
   </component>
+  <base-toast></base-toast>
 </template>

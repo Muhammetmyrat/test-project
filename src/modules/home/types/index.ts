@@ -22,3 +22,9 @@ export interface WidgetBody {
   sessionTimeFrom: string
   sessionTimeTo: string
 }
+export interface Toast {
+  id: number
+  status: string
+  title: string
+  text: string
+}
