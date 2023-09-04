@@ -1,8 +1,6 @@
 import { createI18n } from 'vue-i18n'
-
 import en from '@/locales/en'
 import ae from '@/locales/ae'
-
 const i18n = createI18n({
   globalInjection: true,
   locale: import.meta.env.VITE_DEFAULT_LOCALE,

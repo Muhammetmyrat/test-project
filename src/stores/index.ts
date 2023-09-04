@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-export interface langs {
+export interface Langs {
   id: number
   img: string
   name: string
@@ -10,21 +10,21 @@ export const useIndex = defineStore({
   state: () => ({
     languages: [
       {
-        id: 0,
+        id: 1,
         img: 'Flag-United-States-of-America.webp',
         name: 'English',
         locale: 'en'
       },
       {
-        id: 1,
+        id: 2,
         img: 'Flag-Saudi-Arabia.webp',
         name: 'Arabic',
         locale: 'ae'
       }
-    ] as langs[]
+    ] as Langs[]
   }),
   getters: {
-    getLanguages(): langs[] {
+    getLanguages(): Langs[] {
       return this.languages
     }
   }

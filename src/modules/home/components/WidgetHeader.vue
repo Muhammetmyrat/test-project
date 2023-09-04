@@ -2,9 +2,8 @@
 import { computed } from 'vue'
 import { useDatesStore } from '@/stores/dates'
 import IconPlus from './icons/IconPlus.vue'
-import type { WidgetWeekDays } from '../types/index'
-const datesStore = computed<any>(() => useDatesStore()).value
-const dayInActive = computed<WidgetWeekDays>(() => datesStore.dayInActive)
+const datesStore = computed(() => useDatesStore()).value
+const dayInActive = computed(() => datesStore.dayInActive)
 </script>
 <template>
   <div

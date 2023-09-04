@@ -5,11 +5,13 @@ import { useI18n } from 'vue-i18n'
 import IconDarkMode from './icons/IconDarkMode.vue'
 import IconGitHub from './icons/IconGitHub.vue'
 import { useIndex } from '@/stores/index'
+import { useGetImage } from '@/helpers/getImage'
 const { t: $t, locale } = useI18n()
+const { getImageUrl } = useGetImage()
 const store = computed(() => useIndex()).value
 const languages = computed(() => store.getLanguages)
 let isToogle = ref<Boolean>(false)
-let langToggleButton = ref<any>(null)
+let langToggleButton = ref<HTMLButtonElement | null>(null)
 const changeLocale = (newLocale: string) => {
   locale.value = newLocale
   localStorage.setItem('lang', newLocale)
@@ -24,15 +26,17 @@ const toggleTheme = () => {
     localStorage.setItem('theme', 'dark')
   }
 }
-const getImageUrl = (img: string): string => {
-  return new URL(`../assets/img/${img}`, import.meta.url).href
-}
 onMounted(() => {
-  document.addEventListener('click', (event) => {
-    const isClickInside = langToggleButton.value?.contains(event.target)
-    if (!isClickInside) {
-      if (isToogle.value) {
-        isToogle.value = false
+  document.addEventListener('click', (event: Event) => {
+    if (event) {
+      const target = event.target as HTMLElement
+      if (target) {
+        const isClickInside = langToggleButton.value?.contains(target)
+        if (!isClickInside) {
+          if (isToogle.value) {
+            isToogle.value = false
+          }
+        }
       }
     }
   })

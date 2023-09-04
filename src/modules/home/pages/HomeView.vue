@@ -1,8 +1,11 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 import WidgetHeader from '../components/WidgetHeader.vue'
 import WidgetDatesSlider from '../components/WidgetDatesSlider.vue'
 import WidgetCards from '../components/WidgetCards.vue'
 import WidgetCard from '../components/WidgetCard.vue'
+import { useWidgets } from '@/stores/widgets'
+const store = computed(() => useWidgets()).value
 </script>
 
 <template>
@@ -12,7 +15,11 @@ import WidgetCard from '../components/WidgetCard.vue'
     <widget-header></widget-header>
     <widget-dates-slider></widget-dates-slider>
     <widget-cards>
-      <widget-card></widget-card>
+      <widget-card
+        v-for="getWidget in store.getWidgets"
+        :key="getWidget.id"
+        :widget="getWidget"
+      ></widget-card>
     </widget-cards>
   </div>
 </template>
